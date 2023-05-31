@@ -6,6 +6,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const axios = require('axios');
+
 
 SECRET_SESSION = process.env.SECRET_SESSION;
 
@@ -34,10 +36,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.render('index');
-})
-
 app.use('/auth', require('./controllers/auth'));
 
 // Add this below /auth controllers
@@ -45,6 +43,37 @@ app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
+
+app.get('/', function (req, res) {
+  axios.get('https://www.mmobomb.com/api1/latestnews')
+    .then(function (response) {
+      // handle success
+      //console.log('response ---', response.data);
+      return res.render('index', { news: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+app.get('/games', function (req, res) {
+  axios.get('https://www.mmobomb.com/api1/games')
+    .then(function (response) {
+      // handle success
+      console.log('response ---', response.data);
+      return res.render('games', { games: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+
+
+
+
+
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
