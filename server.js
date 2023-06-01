@@ -49,7 +49,7 @@ app.get('/', function (req, res) {
     .then(function (response) {
       // handle success
       //console.log('response ---', response.data);
-      return res.render('index', { news: response.data })
+      return res.render('homePage', { news: response.data })
     })
     .catch(function (error) {
       res.json({ message: 'Data not found. Please try again later.' });

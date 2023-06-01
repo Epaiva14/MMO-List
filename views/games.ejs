@@ -1,0 +1,193 @@
+<body>
+    <section class="hero is-medium">
+        <div class="hero-body has-text-centered">
+            <h1 class="title is-2">Search for specific game here</h1>
+            <div id="hero-input-group" class="field has-addons has-addons-centered">
+                <div class="control">
+                    <input class="input is-medium" type="text" placeholder="Search..." />
+                </div>
+                <div class="control">
+                    <a class="button is-medium is-primary">
+                        <i class="fal fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container is-max-desktop">
+        <section class="featured">
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <h2 class="subtitle">Featured Games</h2>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <div class="field has-addons has-addons-centered">
+                            <div class="control">
+                                <a class="button is-small" disabled>
+                                    <i class="far fa-chevron-left"></i>
+                                </a>
+                            </div>
+                            <div class="control">
+                                <a class="button is-small">
+                                    <i class="far fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="columns is-multiline">
+                <% for( let i = 0; i < 4; i++ ) { %>
+                <% let game=games[i] %>
+                <div class="column is-3-widescreen is-4-desktop is-6-tablet">
+                    <article>
+                        <figure class="image is-5by3">
+                            <img src="<%= game.thumbnail %>" />
+                        </figure>
+                        <h2 class="subtitle"><%= game.title %></h2>
+                        <span class="tag is-rounded"><%= game.genre %></span>
+                        <span class="tag is-rounded"><%= game.publisher %></span>
+                        <span class="tag is-rounded"><%= game.platform %></span>
+                        <span class="tag is-rounded"><%= game.developer %></span>
+                        <span class="tag is-rounded"><%= game.release_date %></span>
+                    </article>
+                </div>
+                <% } %>
+                <!-- <div class="column is-3">
+                    <article>
+                        <figure class="image is-5by3">
+                            <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png" />
+                        </figure>
+                        <h2 class="subtitle"></h2>
+                        <span class="tag is-rounded">Billing & Accounts</span>
+                    </article>
+                </div>
+                <div class="column is-3">
+                    <article>
+                        <figure class="image is-5by3">
+                            <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png" />
+                        </figure>
+                        <h2 class="subtitle"></h2>
+                        <span class="tag is-rounded">Billing & Accounts</span>
+                    </article>
+                </div>
+                <div class="column is-3">
+                    <article>
+                        <figure class="image is-5by3">
+                            <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png" />
+                        </figure>
+                        <h2 class="subtitle"></h2>
+                        <span class="tag is-rounded">Billing & Accounts</span>
+                    </article>
+                </div> -->
+            </div>
+
+        </section>
+
+        <section class="categories">
+            <div class="columns is-multiline">
+                <div class="column is-6">
+                    <div class="category">
+                        <h1 class="title is-5">
+                            Publishers <span>5 articles</span>
+                        </h1>
+                        <hr />
+                        <ul>
+                            <% for( let i = 0; i < 5; i++ ) { %>
+                            <% let game=games[i] %>
+                            <li>
+                                <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
+                                <%= game.publisher %>
+                            </li>
+                            <% } %>
+                        </ul>
+                        <h3 class="category-more">View All <i class="far fa-arrow-right icon-padding-left"></i></h3>
+                    </div>
+                </div>
+
+                <div class="column is-6">
+                    <div class="category">
+                        <h1 class="title is-5">
+                            Genre's <span>7 articles</span>
+                        </h1>
+                        <hr />
+                        <ul>
+                            <% for( let i = 0; i < 5; i++ ) { %>
+                            <% let game=games[i] %>
+                            <li>
+                                <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
+                                <%= game.genre %>
+                            </li>
+                            <% } %>
+                        </ul>
+                        <h3 class="category-more">View All <i class="far fa-arrow-right icon-padding-left"></i></h3>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="category">
+                        <h1 class="title is-5">
+                            Developers <span>6 articles</span>
+                        </h1>
+                        <hr />
+                        <ul>
+                            <% for( let i = 0; i < 5; i++ ) { %>
+                            <% let game=games[i] %>
+                            <li>
+                                <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
+                                <%= game.developer %>
+                            </li>
+                            <% } %>
+                        </ul>
+                        <h3 class="category-more">View All <i class="far fa-arrow-right icon-padding-left"></i></h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <div class="links">
+
+                    <div class="level-item">
+                        <a href="https://www.bulma.io">Bulma</a>
+                    </div>
+                    <div class="level-item">
+                        <a href="https://bleedingedgepress.com/book_excerpts/FF9932/bulma.twochapters.pdf">Bulma
+                            Book</a>
+                    </div>
+                    <div class="level-item">
+                        <a href="https://www.perplexity.ai">Perplexity</a>
+                    </div>
+                </div><br>
+                <p>
+                    <a href="https://bulma.io">
+                        <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128"
+                            height="24">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Hamburger menu functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
