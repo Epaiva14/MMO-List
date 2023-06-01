@@ -14,6 +14,7 @@
             </div>
         </div>
     </section>
+
     <div class="container is-max-desktop">
         <section class="featured">
             <div class="level">
@@ -40,55 +41,54 @@
                 </div>
             </div>
 
+            <section class="pt-6">
+                <div class="container shadow section-sm rounded">
+                    <div class="columns is-multiline">
+                        <!-- sidebar -->
+                        <div class="column is-3-desktop is-12-tablet">
+                            <ul class="sidenav">
+                                <li title="Basic Startup" class="sidelist parent">
 
-            <div class="columns is-multiline">
-                <% for( let i = 0; i < 4; i++ ) { %>
-                <% let game=games[i] %>
-                <div class="column is-3-widescreen is-4-desktop is-6-tablet">
-                    <article>
-                        <figure class="image is-5by3">
-                            <img src="<%= game.thumbnail %>" />
-                        </figure>
-                        <h2 class="subtitle"><%= game.title %></h2>
-                        <span class="tag is-rounded"><%= game.genre %></span>
-                        <span class="tag is-rounded"><%= game.publisher %></span>
-                        <span class="tag is-rounded"><%= game.platform %></span>
-                        <span class="tag is-rounded"><%= game.developer %></span>
-                        <span class="tag is-rounded"><%= game.release_date %></span>
-                    </article>
-                </div>
-                <% } %>
-                <!-- <div class="column is-3">
-                    <article>
-                        <figure class="image is-5by3">
-                            <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png" />
-                        </figure>
-                        <h2 class="subtitle"></h2>
-                        <span class="tag is-rounded">Billing & Accounts</span>
-                    </article>
-                </div>
-                <div class="column is-3">
-                    <article>
-                        <figure class="image is-5by3">
-                            <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png" />
-                        </figure>
-                        <h2 class="subtitle"></h2>
-                        <span class="tag is-rounded">Billing & Accounts</span>
-                    </article>
-                </div>
-                <div class="column is-3">
-                    <article>
-                        <figure class="image is-5by3">
-                            <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png" />
-                        </figure>
-                        <h2 class="subtitle"></h2>
-                        <span class="tag is-rounded">Billing & Accounts</span>
-                    </article>
-                </div> -->
-            </div>
+                                    <ul>
+                                        <% for( let i=0; i < 20; i++ ) { %>
+                                        <% let game=games[i] %>
+                                        <li class="sidelist">
+                                            <a href="">
+                                                <%= game.title %>
+                                            </a>
 
+                                        </li>
+                                        <% } %>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <% for( let i = 0; i < 6; i++ ) { %>
+                            <% let game=games[i] %>
+                            <div class="column is-3">
+                                <article>
+                                    <figure class="image is-5by3">
+                                        <img src="<%= game.thumbnail %>" />
+                                    </figure>
+                                    <h2 class="subtitle"><%= game.title %></h2>
+                                    <span class="tag is-rounded"><%= game.genre %></span>
+                                    <span class="tag is-rounded"><%= game.publisher %></span>
+                                    <span class="tag is-rounded"><%= game.platform %></span>
+                                    <span class="tag is-rounded"><%= game.developer %></span>
+                                    <span class="tag is-rounded"><%= game.release_date %></span>
+                                </article>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
-
+        <br>
+        <br>
         <section class="categories">
             <div class="columns is-multiline">
                 <div class="column is-6">
@@ -149,6 +149,7 @@
             </div>
         </section>
     </div>
+
     <footer class="footer">
         <div class="container">
             <div class="content has-text-centered">
