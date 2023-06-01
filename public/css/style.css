@@ -25,6 +25,12 @@ body {
     background: rgb(17, 129, 185);
 }
 
+#gameList {
+    display: block;
+    width: 25%;
+    float: left;
+}
+
 .column {
     display: inline-block;
 }

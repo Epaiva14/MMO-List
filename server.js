@@ -60,13 +60,38 @@ app.get('/games', function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
       // handle success
-      console.log('response ---', response.data);
+      // console.log('response ---', response.data);
       return res.render('games', { games: response.data })
     })
     .catch(function (error) {
       res.json({ message: 'Data not found. Please try again later.' });
     });
 });
+
+
+app.get('/games/:id', function (req, res) {
+  //console.log('request here', req.params.id);
+  axios.get(`https://www.mmobomb.com/api1/game?id=${req.params.id}`)
+    .then(function (response) {
+      return res.render('single-game', { game: response.data })
+    })
+    .catch(function (error) {
+      return res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+app.get('/games-list', function (req, res) {
+  //console.log('request here', req.params.id);
+  axios.get('https://www.mmobomb.com/api1/games')
+    .then(function (response) {
+      return res.render('games-list', { games: response.data })
+    })
+    .catch(function (error) {
+      return res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+
 
 
 

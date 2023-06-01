@@ -1,16 +1,30 @@
 <body>
     <section class="hero is-medium">
         <div class="hero-body has-text-centered">
-            <h1 class="title is-2">Search for specific game here</h1>
+            <h1 class="title is-2">Search for specific games here</h1>
             <div id="hero-input-group" class="field has-addons has-addons-centered">
-                <div class="control">
-                    <input class="input is-medium" type="text" placeholder="Search..." />
-                </div>
-                <div class="control">
-                    <a class="button is-medium is-primary">
-                        <i class="fal fa-search"></i>
-                    </a>
-                </div>
+                <form method="POST" action="/games">
+                    <div class="columns is-multiline">
+                        <div class="form-group column is-12">
+                            <label for="category">Search By Category</label>
+                            <select id="category" class="input custom-select" name="category" required>
+                                <option selected disabled>Choose Your Category</option>
+                                <option value="genre">Genre</option>
+                                <option value="platform">Platform</option>
+                                <option value="publisher">Publisher</option>
+                                <option value="developer">Developer</option>
+                                <option value="title">Title</option>
+                            </select>
+                        </div>
+                        <div class="form-group column is-12">
+                            <label for="item">Item</label>
+                            <input type="text" class="input" id="item" name="item" placeholder="Search Games" required>
+                        </div>
+                        <div class="column is-12">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -43,20 +57,18 @@
 
             <section class="pt-6">
                 <div class="container shadow section-sm rounded">
-                    <div class="columns is-multiline">
+                    <div class="columns is-multiline" style="background-color: honeydew;">
                         <!-- sidebar -->
                         <div class="column is-3-desktop is-12-tablet">
                             <ul class="sidenav">
                                 <li title="Basic Startup" class="sidelist parent">
-
                                     <ul>
-                                        <% for( let i=0; i < 20; i++ ) { %>
+                                        <% for(let i=0; i < 25; i++) { %>
                                         <% let game=games[i] %>
                                         <li class="sidelist">
-                                            <a href="">
+                                            <a href="/games/<%= game.id %>">
                                                 <%= game.title %>
                                             </a>
-
                                         </li>
                                         <% } %>
 

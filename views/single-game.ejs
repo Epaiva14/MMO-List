@@ -1,0 +1,165 @@
+<body>
+    <!-- Header -->
+    <section class="hero is-link">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1">
+                    <%= game.title %> </h1>
+                <h2 class="subtitle is-3">
+                    <%= game.short_description %>
+
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <!-- Title -->
+        <div class="section-heading">
+            <h3 class="title is-2">
+                Status: <%= game.status %>
+
+            </h3>
+            <div class="container">
+                <p>
+                </p>
+            </div>
+        </div>
+
+        <div class="columns has-same-height is-gapless">
+            <div class="column">
+                <!-- Profile -->
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="title is-4">Details</h3>
+
+                        <div class="content">
+                            <table class="table-profile">
+                                <tr>
+                                    <th colspan="1"></th>
+                                    <th colspan="2"></th>
+                                </tr>
+                                <tr>
+                                    <td>Genre:</td>
+                                    <td><%= game.genre %></td>
+                                </tr>
+                                <tr>
+                                    <td>Publisher:</td>
+                                    <td><%= game.publisher %></td>
+                                </tr>
+                                <tr>
+                                    <td>Developer:</td>
+                                    <td><%= game.developer %></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="buttons has-addons is-centered">
+                            <a href="<%= game.game_url %>" class="button is-link">Game URL</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <!-- Profile picture -->
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="<%= game.thumbnail %>" alt="Placeholder image">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <!-- Skills -->
+                <div class="card">
+                    <div class="card-content skills-content">
+                        <h3 class="title is-4">Minimum System Requirements</h3>
+                        <div class="content">
+
+                            <article class="media">
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>OS:</strong>
+                                            <br>
+                                            <%= game.minimum_system_requirements.os %>
+                                            <progress class="progress is-primary" value="100" max="100"></progress>
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="media">
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Processor:</strong>
+                                            <br>
+                                            <%= game.minimum_system_requirements.processor %>
+                                            <progress class="progress is-primary" value="100" max="100"></progress>
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="media">
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Memory:</strong>
+                                            <br>
+                                            <%= game.minimum_system_requirements.memory %>
+                                            <progress class="progress is-primary" value="100" max="100"></progress>
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="media">
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Graphics</strong>
+                                            <br>
+                                            <%= game.minimum_system_requirements.graphics %>
+                                            <progress class="progress is-primary" value="100" max="100"></progress>
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="media">
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Storage</strong>
+                                            <br>
+                                            <%= game.minimum_system_requirements.storage %>
+                                            <progress class="progress is-primary" value="100" max="100"></progress>
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-heading">
+            <p>
+                <strong>Bulma Personal Template</strong> by <a href="https://mubaidr.js.org">Muhammad Ubaid Raza</a>.
+                The
+                source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            </p>
+        </div>
+    </footer>
+
+</body>
