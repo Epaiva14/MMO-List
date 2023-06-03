@@ -91,10 +91,6 @@ app.get('/games/:id', function (req, res) {
     });
 });
 
-
-
-
-
 app.get('/games-list', function (req, res) {
   //console.log('request here', req.params.id);
   axios.get('https://www.mmobomb.com/api1/games?sort-by=alphabetical')
@@ -106,11 +102,11 @@ app.get('/games-list', function (req, res) {
     });
 });
 
-app.get('/games-list', function (req, res) {
+app.get('/giveaways', function (req, res) {
   //console.log('request here', req.params.id);
-  axios.get('https://www.mmobomb.com/api1/games?sort-by=alphabetical')
+  axios.get('https://www.mmobomb.com/api1/giveaways')
     .then(function (response) {
-      return res.render('games-list', { games: response.data })
+      return res.render('giveaways', { giveaways: response.data })
     })
     .catch(function (error) {
       return res.json({ message: 'Data not found. Please try again later.' });
@@ -129,6 +125,53 @@ app.get('/help', function (req, res) {
       res.json({ message: 'Data not found. Please try again later.' });
     });
 });
+app.post('/help', function (req, res) {
+  axios.get('https://www.mmobomb.com/api1/games')
+    .then(function (response) {
+      // handle success
+      if (req.body.category === 'genre') {
+        for (let i = 0; i < response.data.length; i++) {
+          let games = response.data[i];
+          if (games.genre === req.body.item) {
+            return res.redirect(`/games/genre/${games.genre}`);
+          }
+        }
+      } else if (req.body.category === 'platform') {
+        for (let i = 0; i < response.data.length; i++) {
+          let games = response.data[i];
+          if (games.platform === req.body.item) {
+            return res.redirect(`/games/genre/${games.genre}`);
+          }
+        }
+      } else if (req.body.category === 'publisher') {
+        for (let i = 0; i < response.data.length; i++) {
+          let games = response.data[i];
+          if (games.publisher === req.body.item) {
+            return res.redirect(`/games/genre/${games.genre}`);
+          }
+        }
+      } else if (req.body.category === 'developer') {
+        for (let i = 0; i < response.data.length; i++) {
+          let games = response.data[i];
+          if (games.developer === req.body.item) {
+            return res.redirect(`/games/genre/${games.genre}`);
+          }
+        }
+      } else if (req.body.category === 'title') {
+        for (let i = 0; i < response.data.length; i++) {
+          let games = response.data[i];
+          if (games.title === req.body.item) {
+            return res.redirect(`/games/genre/${games.genre}`);
+          }
+        }
+      }
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+
 
 app.get('/forums', function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')

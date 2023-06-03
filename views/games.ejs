@@ -76,7 +76,7 @@
                 <div class="column is-6">
                     <div class="category">
                         <h1 class="title is-5">
-                            Publishers <span>5 articles</span>
+                            Publishers
                         </h1>
                         <hr />
                         <ul>
@@ -84,7 +84,7 @@
                             <% let game=games[i] %>
                             <li>
                                 <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                                <a href="<%= game.publisher %>"><%= game.publisher %></a>
+                                <%= game.publisher %>
 
                             </li>
                             <% } %>
@@ -96,11 +96,11 @@
                 <div class="column is-6">
                     <div class="category">
                         <h1 class="title is-5">
-                            Genre's <span>7 articles</span>
+                            Genre's
                         </h1>
                         <hr />
                         <ul>
-                            <% for( let i = 0; i < 5; i++ ) { %>
+                            <% for( let i = 0; i < 10; i++ ) { %>
                             <% let game=games[i] %>
                             <li>
                                 <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
@@ -115,7 +115,7 @@
                 <div class="column is-6">
                     <div class="category">
                         <h1 class="title is-5">
-                            Developers <span>6 articles</span>
+                            Developers
                         </h1>
                         <hr />
                         <ul>

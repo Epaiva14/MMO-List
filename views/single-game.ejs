@@ -84,7 +84,11 @@
                                         <p>
                                             <strong>OS:</strong>
                                             <br>
+                                            <% if (game.minimum_system_requirements===undefined) { %>
+                                            N/A
+                                            <% } else { %>
                                             <%= game.minimum_system_requirements.os %>
+                                            <% } %>
                                             <progress class="progress is-primary" value="100" max="100"></progress>
                                         </p>
                                     </div>
@@ -97,7 +101,11 @@
                                         <p>
                                             <strong>Processor:</strong>
                                             <br>
+                                            <% if (game.minimum_system_requirements===undefined) { %>
+                                            N/A
+                                            <% } else { %>
                                             <%= game.minimum_system_requirements.processor %>
+                                            <% } %>
                                             <progress class="progress is-primary" value="100" max="100"></progress>
                                         </p>
                                     </div>
@@ -110,7 +118,11 @@
                                         <p>
                                             <strong>Memory:</strong>
                                             <br>
+                                            <% if (game.minimum_system_requirements===undefined) { %>
+                                            N/A
+                                            <% } else { %>
                                             <%= game.minimum_system_requirements.memory %>
+                                            <% } %>
                                             <progress class="progress is-primary" value="100" max="100"></progress>
                                         </p>
                                     </div>
@@ -123,7 +135,11 @@
                                         <p>
                                             <strong>Graphics</strong>
                                             <br>
+                                            <% if (game.minimum_system_requirements===undefined) { %>
+                                            N/A
+                                            <% } else { %>
                                             <%= game.minimum_system_requirements.graphics %>
+                                            <% } %>
                                             <progress class="progress is-primary" value="100" max="100"></progress>
                                         </p>
                                     </div>
@@ -136,7 +152,11 @@
                                         <p>
                                             <strong>Storage</strong>
                                             <br>
+                                            <% if (game.minimum_system_requirements===undefined) { %>
+                                            N/A
+                                            <% } else { %>
                                             <%= game.minimum_system_requirements.storage %>
+                                            <% } %>
                                             <progress class="progress is-primary" value="100" max="100"></progress>
                                         </p>
                                     </div>

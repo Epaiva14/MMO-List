@@ -1,6 +1,7 @@
 <section class="pt-6">
     <div class="container shadow section-sm rounded">
         <div class="columns is-multiline">
+
             <!-- sidebar -->
             <div class="column is-12-desktop is-12-tablet" style="background-color: honeydew;">
                 <ul class="sidenav">
@@ -12,7 +13,7 @@
                             <% let game=games[i] %>
                             <li id="gameList" class="sidelist">
                                 <a href="/games/<%= game.id %>">
-                                    <%= game.title %>
+                                    <h1><%= game.genre %></h1> : <%= game.title %>
                                 </a>
                             </li>
                             <% } %>
