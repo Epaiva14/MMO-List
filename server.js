@@ -68,12 +68,38 @@ app.get('/games', function (req, res) {
     });
 });
 
+app.get('/games/genre/:category', function (req, res) {
+  console.log('request here', req.params.category);
+  axios.get(`https://www.mmobomb.com/api1/games?category=${req.params.category}`)
+
+    .then(function (response) {
+      return res.render('single-genre', { games: response.data })
+    })
+    .catch(function (error) {
+      return res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
 
 app.get('/games/:id', function (req, res) {
   //console.log('request here', req.params.id);
   axios.get(`https://www.mmobomb.com/api1/game?id=${req.params.id}`)
     .then(function (response) {
       return res.render('single-game', { game: response.data })
+    })
+    .catch(function (error) {
+      return res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+
+
+
+
+app.get('/games-list', function (req, res) {
+  //console.log('request here', req.params.id);
+  axios.get('https://www.mmobomb.com/api1/games?sort-by=alphabetical')
+    .then(function (response) {
+      return res.render('games-list', { games: response.data })
     })
     .catch(function (error) {
       return res.json({ message: 'Data not found. Please try again later.' });
@@ -90,6 +116,7 @@ app.get('/games-list', function (req, res) {
       return res.json({ message: 'Data not found. Please try again later.' });
     });
 });
+
 
 app.get('/help', function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')

@@ -1,0 +1,27 @@
+<section class="pt-6">
+    <div class="container shadow section-sm rounded">
+        <div class="columns is-multiline">
+            <!-- sidebar -->
+            <div class="column is-12-desktop is-12-tablet" style="background-color: honeydew;">
+                <ul class="sidenav">
+                    <li title="Basic Startup" class="sidelist parent">
+                        <ul>
+
+
+                            <% for(let i=0; i < games.length; i++) { %>
+                            <% let game=games[i] %>
+                            <li id="gameList" class="sidelist">
+                                <a href="/games/<%= game.id %>">
+                                    <%= game.title %>
+                                </a>
+                            </li>
+                            <% } %>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

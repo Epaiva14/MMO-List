@@ -84,7 +84,8 @@
                             <% let game=games[i] %>
                             <li>
                                 <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                                <%= game.publisher %>
+                                <a href="<%= game.publisher %>"><%= game.publisher %></a>
+
                             </li>
                             <% } %>
                         </ul>
@@ -103,7 +104,8 @@
                             <% let game=games[i] %>
                             <li>
                                 <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
-                                <%= game.genre %>
+                                <a href="/games/genre/<%= game.genre %>"><%= game.genre %></a>
+
                             </li>
                             <% } %>
                         </ul>
