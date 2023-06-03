@@ -1,34 +1,4 @@
 <body>
-    <section class="hero is-medium">
-        <div class="hero-body has-text-centered">
-            <h1 class="title is-2">Search for specific games here</h1>
-            <div id="hero-input-group" class="field has-addons has-addons-centered">
-                <form method="POST" action="/games">
-                    <div class="columns is-multiline">
-                        <div class="form-group column is-12">
-                            <label for="category">Search By Category</label>
-                            <select id="category" class="input custom-select" name="category" required>
-                                <option selected disabled>Choose Your Category</option>
-                                <option value="genre">Genre</option>
-                                <option value="platform">Platform</option>
-                                <option value="publisher">Publisher</option>
-                                <option value="developer">Developer</option>
-                                <option value="title">Title</option>
-                            </select>
-                        </div>
-                        <div class="form-group column is-12">
-                            <label for="item">Item</label>
-                            <input type="text" class="input" id="item" name="item" placeholder="Search Games" required>
-                        </div>
-                        <div class="column is-12">
-                            <button type="submit" class="btn btn-primary">Send</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
     <div class="container is-max-desktop">
         <section class="featured">
             <div class="level">
