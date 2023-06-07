@@ -11,16 +11,16 @@
                     <div class="column right has-text-centered">
                         <h1 class="title is-4">Make your post here.</h1>
                         <p class="description">Questions, comments, concerns?</p>
-                        <form>
+                        <form action="/forums" method="post">
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-medium" type="text" placeholder="Name">
+                                    <input name="title" class="input is-medium" type="text" placeholder="Title">
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-medium" type="text" placeholder="Comment here">
+                                    <input name="content" class="input is-medium" type="text" placeholder="Post">
                                 </div>
                             </div>
                             <button class="button is-block is-primary is-fullwidth is-medium">Submit</button>

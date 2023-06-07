@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
+const { post, game } = require('./models');
 
 SECRET_SESSION = process.env.SECRET_SESSION;
 
@@ -51,7 +52,7 @@ app.get('/', function (req, res) {
       return res.render('homePage', { news: response.data })
     })
     .catch(function (error) {
-      res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
 
@@ -63,7 +64,7 @@ app.get('/games', function (req, res) {
       return res.render('games', { games: response.data })
     })
     .catch(function (error) {
-      res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
 
@@ -75,7 +76,7 @@ app.get('/games/genre/:category', function (req, res) {
       return res.render('single-genre', { games: response.data })
     })
     .catch(function (error) {
-      return res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
 
@@ -86,7 +87,7 @@ app.get('/games/:id', function (req, res) {
       return res.render('single-game', { game: response.data })
     })
     .catch(function (error) {
-      return res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
 
@@ -97,7 +98,7 @@ app.get('/games-list', function (req, res) {
       return res.render('games-list', { games: response.data })
     })
     .catch(function (error) {
-      return res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
 
@@ -108,10 +109,9 @@ app.get('/giveaways', function (req, res) {
       return res.render('giveaways', { giveaways: response.data })
     })
     .catch(function (error) {
-      return res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
-
 
 app.get('/help', function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
@@ -121,9 +121,10 @@ app.get('/help', function (req, res) {
       return res.render('helpPage', { games: response.data })
     })
     .catch(function (error) {
-      res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
+
 app.post('/help', function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
@@ -157,28 +158,21 @@ app.post('/help', function (req, res) {
       }
     })
     .catch(function (error) {
-      res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
 
 
-
 app.get('/forums', function (req, res) {
-  axios.get('https://www.mmobomb.com/api1/games')
-    .then(function (response) {
-      // handle success
-      //console.log('response ---', response.data);
-      return res.render('forums', { games: response.data })
+  game.findAll()
+    .then(response => {
+      // handle successxs
+      console.log('WOOOOOOOOOOOO');
+      return res.render('forums', { posts: response.data })
     })
     .catch(function (error) {
-      res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
-
-  // const newForum = document.getElementById('newForum');
-  // newForum.addEventListener('click', function (e) {
-  //   e.preventDefault();
-  //   console.log('button was clicked');
-  // })
 });
 
 
@@ -197,15 +191,24 @@ app.get('/forums/post', function (req, res) {
       return res.render('forum-post')
     })
     .catch(function (error) {
-      res.json({ message: 'Data not found. Please try again later.' });
+      res.render('no-result');
     });
 });
 
-// app.post('/forums', function (req, res) {
-// })
-
-
-
+app.post('/forums', function (req, res) {
+  console.log(req.user.dataValues.id, req.body);
+  db.post.create({
+    title: req.body.title,
+    content: req.body.content,
+    userId: req.user.dataValues.id
+  })
+    .then(response => {
+      res.redirect('/forums')
+    })
+    .catch(function (error) {
+      res.render('no-result');
+    });
+});
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
