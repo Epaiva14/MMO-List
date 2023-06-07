@@ -8,6 +8,7 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const { post, game } = require('./models');
+const methodOverride = require('method-override');
 
 SECRET_SESSION = process.env.SECRET_SESSION;
 
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
+app.use(methodOverride('_method'));
 app.use(layouts);
 app.use(flash());            // flash middleware
 
@@ -167,7 +169,7 @@ app.get('/forums', isLoggedIn, function (req, res) {
     .then(posts => {
       // handle successxs
       //console.log('WOOOOOOOOOOOO');
-      console.log('WOOOOOOOOOOOO', posts);
+      //console.log('WOOOOOOOOOOOO, posts);
       return res.render('forums', { posts })
     })
     .catch(function (error) {
@@ -188,21 +190,70 @@ app.get('/forums/post', isLoggedIn, function (req, res) {
     });
 });
 
+app.get('/forums/edit/:id', isLoggedIn, function (req, res) {
+  post.findOne({
+    where: { id: parseInt(req.params.id) }
+  })
+    .then(foundPost => {
+      foundPost = foundPost.toJSON();
+      console.log('what is this??', foundPost);
+      return res.render('edit', { post: foundPost });
+    })
+    .catch(function (error) {
+      console.log(error);
+      res.render('no-result');
+    })
+})
+
 app.post('/forums', isLoggedIn, function (req, res) {
-  console.log(req.user.dataValues.id, req.body);
+  //console.log(req.user.dataValues.id, req.body);
   const postData = { ...req.body }
   postData.title = req.body.title
   postData.content = req.body.content
   postData.userId = req.user.dataValues.id
   post.create(postData)
     .then(response => {
-      console.log('what is the response', response)
+      //console.log('what is the response', response)
       res.redirect('/forums')
     })
     .catch(function (error) {
+      console.log('Error', error);
       res.render('no-result');
     });
 });
+
+app.put('/forums/edit/:id', isLoggedIn, function (req, res) {
+  const postData = { ...req.body }
+  postData.title = req.body.title
+  postData.content = req.body.content
+  postData.userId = req.user.dataValues.id
+  post.update(postData, {
+    where: { id: parseInt(req.params.id) }
+  })
+    .then(updatedPost => {
+      console.log('what post got updated?', updatedPost);
+      res.redirect('/forums')
+    })
+    .catch(err => {
+      console.log('Error', err);
+      res.render('no-result')
+    });
+})
+
+app.delete('/:id', isLoggedIn, function (req, res) {
+  post.destroy({
+    where: { id: parseInt(req.params.id) }
+  })
+    .then(postDeleted => {
+      console.log('what post got deleted?', postDeleted);
+      res.redirect('/forums');
+    })
+    .catch(err => {
+      console.log('Error', err);
+      res.render('no-result')
+    });
+})
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

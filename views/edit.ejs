@@ -1,0 +1,48 @@
+<body>
+    <section class="container">
+        <div class="columns is-multiline">
+            <div class="column is-8 is-offset-2 register">
+                <div class="columns">
+                    <div class="column left">
+                        <h1 class="title is-1">What would you like to say/post?</h1>
+                        <h2 class="subtitle colored is-4">Please follow community guidelines.</h2>
+                        <p>This is a great way to get your voice heard!</p>
+                    </div>
+                    <div class="column right has-text-centered">
+                        <h1 class="title is-4">Edit your post here.</h1>
+                        <p class="description">Questions, comments, concerns?</p>
+                        <form method="POST" action="/forums/edit/<%= post.id %>/?_method=PUT">
+                            <div class="field">
+                                <div class="control">
+                                    <input name="title" class="input is-medium" type="text" placeholder="Title"
+                                        value="<%= post.title %>">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input name="content" class="input is-medium" type="text" placeholder="Content"
+                                        value="<%= post.content %>">
+                                </div>
+                            </div>
+                            <button type="submit" class="button is-block is-primary is-fullwidth is-medium">Submit
+                                Post</button>
+                            <a class="button is-block is-warning is-one-third is-medium" href="/forums">Cancel</a>
+                        </form>
+                        <br />
+                        <small><em>Please follow community guidelines.</em></small>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8 is-offset-2">
+                <br>
+                <nav class="level">
+                    <div class="level-right">
+                        <small class="level-item" style="color: var(--textLight)">
+                            &copy; Super Cool Website. All Rights Reserved.
+                        </small>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+</body>
