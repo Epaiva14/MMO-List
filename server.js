@@ -56,7 +56,7 @@ app.get('/', function (req, res) {
     });
 });
 
-app.get('/games', function (req, res) {
+app.get('/games', isLoggedIn, function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
       // handle success
@@ -68,7 +68,7 @@ app.get('/games', function (req, res) {
     });
 });
 
-app.get('/games/genre/:category', function (req, res) {
+app.get('/games/genre/:category', isLoggedIn, function (req, res) {
   console.log('request here', req.params.category);
   axios.get(`https://www.mmobomb.com/api1/games?category=${req.params.category}`)
 
@@ -80,7 +80,7 @@ app.get('/games/genre/:category', function (req, res) {
     });
 });
 
-app.get('/games/:id', function (req, res) {
+app.get('/games/:id', isLoggedIn, function (req, res) {
   //console.log('request here', req.params.id);
   axios.get(`https://www.mmobomb.com/api1/game?id=${req.params.id}`)
     .then(function (response) {
@@ -91,7 +91,7 @@ app.get('/games/:id', function (req, res) {
     });
 });
 
-app.get('/games-list', function (req, res) {
+app.get('/games-list', isLoggedIn, function (req, res) {
   //console.log('request here', req.params.id);
   axios.get('https://www.mmobomb.com/api1/games?sort-by=alphabetical')
     .then(function (response) {
@@ -102,7 +102,7 @@ app.get('/games-list', function (req, res) {
     });
 });
 
-app.get('/giveaways', function (req, res) {
+app.get('/giveaways', isLoggedIn, function (req, res) {
   //console.log('request here', req.params.id);
   axios.get('https://www.mmobomb.com/api1/giveaways')
     .then(function (response) {
@@ -113,7 +113,7 @@ app.get('/giveaways', function (req, res) {
     });
 });
 
-app.get('/help', function (req, res) {
+app.get('/help', isLoggedIn, function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
       // handle success
@@ -125,7 +125,7 @@ app.get('/help', function (req, res) {
     });
 });
 
-app.post('/help', function (req, res) {
+app.post('/help', isLoggedIn, function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
       // handle success
@@ -162,31 +162,24 @@ app.post('/help', function (req, res) {
     });
 });
 
-
-app.get('/forums', function (req, res) {
-  game.findAll()
-    .then(response => {
+app.get('/forums', isLoggedIn, function (req, res) {
+  post.findAll()
+    .then(posts => {
       // handle successxs
-      console.log('WOOOOOOOOOOOO');
-      return res.render('forums', { posts: response.data })
+      //console.log('WOOOOOOOOOOOO');
+      console.log('WOOOOOOOOOOOO', posts);
+      return res.render('forums', { posts })
     })
     .catch(function (error) {
+      console.log(error);
       res.render('no-result');
     });
 });
 
-
-app.get('/forums/post', function (req, res) {
+app.get('/forums/post', isLoggedIn, function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
       // handle success
-      // document.getElementById('newForum').addEventListener('click', function (e) {
-      //   e.preventDefault();
-      //   let newPost = document.createElement('article');
-      //   newPost.classList.add('post');
-      //   document.createElement('h4')
-      //   document.create
-      // })
       //console.log('response ---', response.data);
       return res.render('forum-post')
     })
@@ -195,14 +188,15 @@ app.get('/forums/post', function (req, res) {
     });
 });
 
-app.post('/forums', function (req, res) {
+app.post('/forums', isLoggedIn, function (req, res) {
   console.log(req.user.dataValues.id, req.body);
-  db.post.create({
-    title: req.body.title,
-    content: req.body.content,
-    userId: req.user.dataValues.id
-  })
+  const postData = { ...req.body }
+  postData.title = req.body.title
+  postData.content = req.body.content
+  postData.userId = req.user.dataValues.id
+  post.create(postData)
     .then(response => {
+      console.log('what is the response', response)
       res.redirect('/forums')
     })
     .catch(function (error) {

@@ -15,8 +15,8 @@ module.exports = {
       content: {
         type: Sequelize.STRING
       },
-      user: {
-        type: Sequelize.STRING
+      userId: {
+        type: Sequelize.INTEGER
       },
       comments: {
         type: Sequelize.STRING

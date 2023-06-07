@@ -19,10 +19,14 @@
                     </ul>
                 </aside>
             </div>
+            <% for( let i = 0; i < posts.length; i++ ) { %>
+            <% let post=posts[i] %>
+            <% post = post.toJSON() %>
+            <% console.log('Cleaned DATA', post) %>
             <div class="column is-9">
                 <div class="box content">
                     <article class="post">
-                        <h4>Q4 Devs: Why arent there more games?</h4>
+                        <h4><%= post.title %></h4>
                         <div class="media">
                             <div class="media-left">
                                 <p class="image is-32x32">
@@ -32,123 +36,21 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <a href="#">@jsmith</a> replied 34 minutes ago &nbsp;
+                                        <%= post.content %>
+                                        <a href="#"><%= posts.userId %></a>
                                         <span class="tag">Question</span>
                                     </p>
                                 </div>
                             </div>
                             <div class="media-right">
-                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="post">
-                        <h4>How do I edit my profile?</h4>
-                        <div class="media">
-                            <div class="media-left">
-                                <p class="image is-32x32">
-                                    <img src="http://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a href="#">@red</a> replied 40 minutes ago &nbsp;
-                                        <span class="tag">Question</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 0</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="post">
-                        <h4>Whats going to be my delete routes?</h4>
-                        <div class="media">
-                            <div class="media-left">
-                                <p class="image is-32x32">
-                                    <img src="http://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a href="#">@jsmith</a> replied 53 minutes ago &nbsp;
-                                        <span class="tag">Question</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 13</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="post">
-                        <h4>Are there enough routes?</h4>
-                        <div class="media">
-                            <div class="media-left">
-                                <p class="image is-32x32">
-                                    <img src="http://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a href="#">@brown</a> replied 3 hours ago &nbsp;
-                                        <span class="tag">Question</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="post">
-                        <h4>Im trying to send a ticket request, and it doesnt work?</h4>
-                        <div class="media">
-                            <div class="media-left">
-                                <p class="image is-32x32">
-                                    <img src="http://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a href="#">@hamburgler</a> replied 5 hours ago &nbsp;
-                                        <span class="tag">Question</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="post">
-                        <h4>What color is the sky?</h4>
-                        <div class="media">
-                            <div class="media-left">
-                                <p class="image is-32x32">
-                                    <img src="http://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a href="#">@rapper</a> replied 3 hours ago &nbsp;
-                                        <span class="tag">Question</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 2</span>
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i></span>
                             </div>
                         </div>
                     </article>
                 </div>
+                <% } %>
             </div>
+
         </div>
     </section>
     <footer class="footer">
