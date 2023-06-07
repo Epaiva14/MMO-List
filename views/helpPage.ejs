@@ -4,7 +4,7 @@
         <div class="hero-body has-text-centered">
             <h1 class="title is-2">Search for specific games here</h1>
             <div id="hero-input-group" class="field has-addons has-addons-centered">
-                <form method="POST" action="/help">
+                <form method="POST" autocomplete="off" action="/help">
                     <div class="columns is-multiline">
                         <div class="form-group column is-12">
                             <label for="category">Search By Category</label>
@@ -12,18 +12,28 @@
                                 <option selected disabled>Choose Your Category</option>
                                 <option value="genre">Genre</option>
                                 <option value="platform">Platform</option>
-                                <option value="publisher">Publisher</option>
-                                <option value="developer">Developer</option>
                                 <option value="title">Title</option>
                             </select>
                         </div>
                         <div class="form-group column is-12">
-                            <label for="item">Item</label>
-                            <input type="text" class="input" id="item" name="item" placeholder="Search Games" required>
+                            <label for="item">Make your selection:</label>
+                            <input list="item" class="input" id="item" name="item" placeholder="Search Games" required>
                         </div>
                         <div class="column is-12">
                             <button type="submit" class="btn btn-primary">Send</button>
                         </div>
+                        <section>
+                            Type these searches for Genre Types: <br>
+                            <ul>
+                                <li> Strategy</li>
+                                <li> Shooter</li>
+                                <li> MMORPG</li>
+                                <li> Social</li>
+                                <li> Sports</li>
+                                <li> Racing</li>
+                                <li> Fantasy</li>
+                            </ul>
+                        </section>
                     </div>
                 </form>
             </div>
@@ -71,5 +81,7 @@
             </div>
         </div>
     </section>
-
+    <script>
+        autocomplete(document.getElementById("myInput"), genreTypes);
+    </script>
 </body>

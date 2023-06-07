@@ -8,7 +8,6 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 
-
 SECRET_SESSION = process.env.SECRET_SESSION;
 
 
@@ -118,7 +117,7 @@ app.get('/help', function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
       // handle success
-      console.log('response ---', response.data);
+      //console.log('response ---', response.data);
       return res.render('helpPage', { games: response.data })
     })
     .catch(function (error) {
@@ -132,7 +131,10 @@ app.post('/help', function (req, res) {
       if (req.body.category === 'genre') {
         for (let i = 0; i < response.data.length; i++) {
           let games = response.data[i];
-          if (games.genre === req.body.item) {
+          // console.log('where is the error', games.genre);
+          // console.log('where is the error',);
+          if (games.genre.toLowerCase() === req.body.item.toLowerCase().split(' ').join('-')) {
+            //console.log('what does the string say', req.body.item);
             return res.redirect(`/games/genre/${games.genre}`);
           }
         }
@@ -143,27 +145,15 @@ app.post('/help', function (req, res) {
             return res.redirect(`/games/genre/${games.genre}`);
           }
         }
-      } else if (req.body.category === 'publisher') {
-        for (let i = 0; i < response.data.length; i++) {
-          let games = response.data[i];
-          if (games.publisher === req.body.item) {
-            return res.redirect(`/games/genre/${games.genre}`);
-          }
-        }
-      } else if (req.body.category === 'developer') {
-        for (let i = 0; i < response.data.length; i++) {
-          let games = response.data[i];
-          if (games.developer === req.body.item) {
-            return res.redirect(`/games/genre/${games.genre}`);
-          }
-        }
       } else if (req.body.category === 'title') {
         for (let i = 0; i < response.data.length; i++) {
           let games = response.data[i];
           if (games.title === req.body.item) {
-            return res.redirect(`/games/genre/${games.genre}`);
+            return res.redirect(`/games/${games.id}`);
           }
         }
+      } else {
+        return res.json({ message: 'No matching items' });
       }
     })
     .catch(function (error) {
@@ -177,14 +167,42 @@ app.get('/forums', function (req, res) {
   axios.get('https://www.mmobomb.com/api1/games')
     .then(function (response) {
       // handle success
-      console.log('response ---', response.data);
+      //console.log('response ---', response.data);
       return res.render('forums', { games: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+
+  // const newForum = document.getElementById('newForum');
+  // newForum.addEventListener('click', function (e) {
+  //   e.preventDefault();
+  //   console.log('button was clicked');
+  // })
+});
+
+
+app.get('/forums/post', function (req, res) {
+  axios.get('https://www.mmobomb.com/api1/games')
+    .then(function (response) {
+      // handle success
+      // document.getElementById('newForum').addEventListener('click', function (e) {
+      //   e.preventDefault();
+      //   let newPost = document.createElement('article');
+      //   newPost.classList.add('post');
+      //   document.createElement('h4')
+      //   document.create
+      // })
+      //console.log('response ---', response.data);
+      return res.render('forum-post')
     })
     .catch(function (error) {
       res.json({ message: 'Data not found. Please try again later.' });
     });
 });
 
+// app.post('/forums', function (req, res) {
+// })
 
 
 
