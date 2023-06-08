@@ -37,7 +37,9 @@
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">
-        <img src="/images/Screenshot 2023-06-07 at 2.37.26 AM.png" alt="Logo">
+        <img
+          src="https://www.freepngimg.com/thumb/graphic_design/81813-character-tshirt-fictional-game-video-gamer-logo.png"
+          alt="Logo" id="logo">
       </a>
       <span class="navbar-burger burger" data-target="navbarMenu">
         <span></span>
@@ -47,31 +49,31 @@
     </div>
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-end">
-        <a href="/" class="navbar-item is-active">
+        <a href="/" class="navbar-item" style="color: white;">
           Home
         </a>
-        <a href="/games" class="navbar-item is-active">
+        <a href="/games" class="navbar-item" style="color: white;">
           Featured Games
         </a>
-        <a href="/games-list" class="navbar-item">
+        <a href="/games-list" class="navbar-item" style="color: white;">
           Games List
         </a>
-        <a href="/giveaways" class="navbar-item">
+        <a href="/giveaways" class="navbar-item" style="color: white;">
           Giveaways
         </a>
-        <a href="/forums" class="navbar-item">
+        <a href="/forums" class="navbar-item" style="color: white;">
           Forums
         </a>
-        <a href="/help" class="navbar-item">
+        <a href="/help" class="navbar-item" style="color: white;">
           Search/Help
         </a>
         <%- include('partials/alerts') %>
         <% if (!currentUser) {%>
-        <a href="/auth/signup" class="navbar-item">Signup</a>
-        <a href="/auth/login" class="navbar-item">Login</a>
+        <a href="/auth/signup" class="navbar-item" style="color: white;">Signup</a>
+        <a href="/auth/login" class="navbar-item" style="color: white;">Login</a>
         <% } else { %>
-        <a href="/auth/logout" class="navbar-item">Logout</a>
-        <a href="/profile" class="navbar-item">Profile</a>
+        <a href="/auth/logout" class="navbar-item" style="color: white;">Logout</a>
+        <a href="/profile" class="navbar-item" style="color: white;">Profile</a>
         <% } %>
       </div>
     </div>

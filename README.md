@@ -21,6 +21,8 @@ Search/Help `/help`
 ## Wireframes
 - ![excalidraw](/images/Screenshot%202023-06-07%20at%202.37.26%20AM.png)
 
+This was my original framework, and I have ended up creating several other view pages for other routes. I have used `ejs`, `js`, `css`, `node`,`psql`, and `Sequelize` to build this project out. Having to learn CRUD and applying different logic for each route was a challenge, and overall this project was very enjoyable to take on.
+
 
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
@@ -43,9 +45,19 @@ npm install bcryptjs connect-flash passport passport-local express-session metho
 - [express-session](https://github.com/expressjs/session): Create a session middleware with given *options*.
 - [method-override](https://github.com/expressjs/method-override): Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
 
+You must have your port and server running in order to view the page locally. Otherwise use the site on the deployed webpage:
+
 # Final Notes:
 Id like to mention this was a challenging feat. I do admit that I had plenty of trouble getting the routes configuration to work effectively. The post/put/delete routes were an interesting tackle. Im enjoing the journey of becoming well versed in programming, but theres so much room for improvement. My ideas for this project are still blossoming, and I believe the app will get to the point where I feel its optimization wont need much more editing/programming.
 
 - If you have any ideas or recommendations, please let me know..
 
 -[Github](github.com/Epaiva14)
+
+## Credits
+
+I have used other peoples artwork and images for the designes for the webpage. Thanks and credit to those who have ownership to the images and templates.
+
+- logo from freepngimg.com
+- background from wallpapersafari.com
+- all routes have templates from bulmatemplates.github.io

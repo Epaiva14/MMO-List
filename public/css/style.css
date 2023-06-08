@@ -24,7 +24,7 @@
 html,
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    background-image: url(https://cdn.wallpapersafari.com/54/3/150Mub.png);
+    background-image: url(https://mcdn.wallpapersafari.com/medium/34/52/ngB9zp.jpg);
 }
 
 #gameList {
@@ -76,6 +76,10 @@ body {
     background: black;
 }
 
+#logo {
+    max-height: 5.75rem;
+    margin-bottom: -30px;
+}
 
 nav ul li {
     text-decoration: none;
@@ -84,8 +88,7 @@ nav ul li {
 }
 
 h1 {
-    color: chartreuse;
-
+    color: black;
 }
 
 .gradient-custom {
