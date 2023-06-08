@@ -7,7 +7,7 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
-const { post, game } = require('./models');
+const { post, game, user } = require('./models');
 const methodOverride = require('method-override');
 
 SECRET_SESSION = process.env.SECRET_SESSION;
@@ -205,6 +205,37 @@ app.get('/forums/edit/:id', isLoggedIn, function (req, res) {
     })
 })
 
+app.get('/profile/edit/:id', isLoggedIn, function (req, res) {
+  user.update(parsed_user_data, {
+    where: { id: req.params.id }
+  })
+    .then(foundUser => {
+
+      res.render('profile-edit', { foundUser });
+    })
+
+    .catch(err => {
+      console.log('Error', err);
+    });
+
+});
+app.put('/profile/edit/:id', isLoggedIn, function (req, res) {
+  const parsed_user_data = { ...req.user };
+  parsed_user_data.active = false;
+
+  user.update(parsed_user_data, {
+    where: { id: req.params.id }
+  })
+    .then(() => {
+
+      res.redirect('/profile');
+    })
+
+    .catch(err => {
+      console.log('Error', err);
+    });
+
+})
 app.post('/forums', isLoggedIn, function (req, res) {
   //console.log(req.user.dataValues.id, req.body);
   const postData = { ...req.body }
@@ -221,6 +252,24 @@ app.post('/forums', isLoggedIn, function (req, res) {
       res.render('no-result');
     });
 });
+
+app.put('/profile/:id', isLoggedIn, function (req, res) {
+  const parsed_user_data = { ...req.user };
+
+  parsed_user_data.active = false;
+
+  user.update(parsed_user_data, {
+    where: { id: req.params.id }
+  })
+    .then(() => {
+      req.logOut(function (err, next) {
+        if (err) { return next(err); }
+        req.flash('success', 'Account Deleted.  Hope you come back!');
+        res.redirect('/');
+      });
+    })
+    .catch(err => { console.log('Error', err); });
+})
 
 app.put('/forums/edit/:id', isLoggedIn, function (req, res) {
   const postData = { ...req.body }
@@ -240,7 +289,7 @@ app.put('/forums/edit/:id', isLoggedIn, function (req, res) {
     });
 })
 
-app.delete('/:id', isLoggedIn, function (req, res) {
+app.delete('/forums/edit/:id', isLoggedIn, function (req, res) {
   post.destroy({
     where: { id: parseInt(req.params.id) }
   })
@@ -248,9 +297,9 @@ app.delete('/:id', isLoggedIn, function (req, res) {
       console.log('what post got deleted?', postDeleted);
       res.redirect('/forums');
     })
-    .catch(err => {
-      console.log('Error', err);
-      res.render('no-result')
+    .catch(function (error) {
+      console.log('Error', error);
+      res.render('no-result');
     });
 })
 

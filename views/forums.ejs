@@ -38,16 +38,19 @@
                                 <div class="content">
                                     <p>
                                         <%= post.content %>
-                                        <a href="#"><%= posts.userId %></a>
+                                        <br>
+                                        User ID:
+                                        <a href="/profile"><%= post.userId %></a>
                                         <br>
                                         <span class="tag">Question</span>
                                     </p>
                                 </div>
                             </div>
                             <div class="media-right">
-                                <a class="button is-block is-primary is-one-third is-medium"
-                                    href="/forums/edit/<%= post.id %>">Edit Post</a>
+
                                 <form method="POST" action="/forums/edit/<%= post.id %>/?_method=DELETE">
+                                    <a class="button is-block is-primary is-one-third is-medium"
+                                        href="/forums/edit/<%= post.id %>">Edit Post</a>
                                     <input class="button is-block is-danger is-one-fifth is-small" type="submit"
                                         value="Delete">
                                 </form>

@@ -23,6 +23,11 @@ Search/Help `/help`
 
 This was my original framework, and I have ended up creating several other view pages for other routes. I have used `ejs`, `js`, `css`, `node`,`psql`, and `Sequelize` to build this project out. Having to learn CRUD and applying different logic for each route was a challenge, and overall this project was very enjoyable to take on.
 
+## User Stories
+- As a user, i want to log into the website, and find info on mmo's
+- As a user, i want to find which mmo's have the greatest avg playtime
+- As a user, i want to find which games my pc/console can play
+- As a user, i want access to games data, such as twitch, youtube, website, and ratings.
 
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
