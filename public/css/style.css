@@ -19,14 +19,12 @@
     }
 }
 
-body {
-    background-image: url(/images/194172\ Small.png);
-}
+
 
 html,
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-
+    background-image: url(https://cdn.wallpapersafari.com/54/3/150Mub.png);
 }
 
 #gameList {
@@ -75,7 +73,7 @@ body {
 
 .navbar,
 .footer {
-    background: rgb(17, 129, 185);
+    background: black;
 }
 
 

@@ -21,6 +21,7 @@ Search/Help `/help`
 ## Wireframes
 - ![excalidraw](/images/Screenshot%202023-06-07%20at%202.37.26%20AM.png)
 
+
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
 
@@ -42,4 +43,9 @@ npm install bcryptjs connect-flash passport passport-local express-session metho
 - [express-session](https://github.com/expressjs/session): Create a session middleware with given *options*.
 - [method-override](https://github.com/expressjs/method-override): Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
 
-`
+# Final Notes:
+Id like to mention this was a challenging feat. I do admit that I had plenty of trouble getting the routes configuration to work effectively. The post/put/delete routes were an interesting tackle. Im enjoing the journey of becoming well versed in programming, but theres so much room for improvement. My ideas for this project are still blossoming, and I believe the app will get to the point where I feel its optimization wont need much more editing/programming.
+
+- If you have any ideas or recommendations, please let me know..
+
+-[Github](github.com/Epaiva14)
