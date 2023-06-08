@@ -5,10 +5,69 @@
 Various data from 100's of games. Including, but not limited to,
 minimum game specs, release dates, titles, genre's, etc.
 
+## Wireframes
+- ![excalidraw](/images/Screenshot%202023-06-07%20at%202.37.26%20AM.png)
+
+This was my original framework, and I have ended up creating several other view pages for other routes. I have used `ejs`, `js`, `css`, `node`,`psql`, and `Sequelize` to build this project out. Having to learn CRUD and applying different logic for each route was a challenge, and overall this project was very enjoyable to take on.
 
 ### User Model
 A user model was created to give the user access to the webpage, and have details on each game the website has access to.
 
+```JS
+'use strict';
+const bcrypt = require('bcryptjs');
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class user extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      models.user.hasMany(models.post)
+    }
+  }
+  user.init({
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [1, 99],
+          msg: 'Name must be between 1 and 99 characters'
+        }
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          msg: "Invalid email"
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [8, 99],
+          msg: 'Password must be between 8 and 99 characters'
+        }
+      }
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    }
+  }, {
+    sequelize,
+    modelName: 'user',
+  });
+
+```
 
 ### Default Routes
 Home `/`
@@ -18,10 +77,23 @@ Live Giveaways  `/giveaways`
 Forums `/forums`
 Search/Help `/help`
 
-## Wireframes
-- ![excalidraw](/images/Screenshot%202023-06-07%20at%202.37.26%20AM.png)
+- The isLoggedIn function runs to make sure the user is logged in before they can access the webpage.
 
-This was my original framework, and I have ended up creating several other view pages for other routes. I have used `ejs`, `js`, `css`, `node`,`psql`, and `Sequelize` to build this project out. Having to learn CRUD and applying different logic for each route was a challenge, and overall this project was very enjoyable to take on.
+```JS
+app.get('/games', isLoggedIn, function (req, res) {
+  axios.get('https://www.mmobomb.com/api1/games')
+    .then(function (response) {
+      // handle success
+      // console.log('response ---', response.data);
+      return res.render('games', { games: response.data })
+    })
+    .catch(function (error) {
+      res.render('no-result');
+    });
+});
+
+```
+
 
 ## User Stories
 - As a user, i want to log into the website, and find info on mmo's
