@@ -6,7 +6,7 @@ Various data from 100's of games. Including, but not limited to,
 minimum game specs, release dates, titles, genre's, etc.
 
 ## Wireframes
-- ![excalidraw](/images/Screenshot%202023-06-07%20at%202.37.26%20AM.png)
+- ![excalidraw](/images/Untitled-2023-05-23-2230.png)
 
 This was my original framework, and I have ended up creating several other view pages for other routes. I have used `ejs`, `js`, `css`, `node`,`psql`, and `Sequelize` to build this project out. Having to learn CRUD and applying different logic for each route was a challenge, and overall this project was very enjoyable to take on.
 
@@ -138,3 +138,4 @@ I have used other peoples artwork and images for the designes for the webpage. T
 - logo from freepngimg.com
 - background from wallpapersafari.com
 - all routes have templates from bulmatemplates.github.io
+- API database from mmobomb.com
