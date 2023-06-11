@@ -206,12 +206,14 @@ app.get('/forums/edit/:id', isLoggedIn, function (req, res) {
 })
 
 app.get('/profile/edit/:id', isLoggedIn, function (req, res) {
+  const parsed_user_data = { ...req.user };
+  const { id, name, email } = req.user.get();
   user.update(parsed_user_data, {
     where: { id: req.params.id }
   })
     .then(foundUser => {
-
-      res.render('profile-edit', { foundUser });
+      console.log('what is this data', foundUser);
+      res.render('profile', { id, name, email, foundUser });
     })
 
     .catch(err => {
