@@ -30,6 +30,13 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #c4c4c4
     }
+
+    /* Add a custom style for the navbar item hover effect */
+    .navbar-item-hovered:hover {
+      background-color: darkseagreen !important;
+      color: white !important;
+      /* Set the text color to contrast with the background */
+    }
   </style>
 </head>
 <!-- START NAV -->
@@ -48,32 +55,21 @@
       </span>
     </div>
     <div id="navbarMenu" class="navbar-menu">
+
       <div class="navbar-end">
-        <a href="/" class="navbar-item" style="color: white;">
-          Home
-        </a>
-        <a href="/games" class="navbar-item" style="color: white;">
-          Featured Games
-        </a>
-        <a href="/games-list" class="navbar-item" style="color: white;">
-          Games List
-        </a>
-        <a href="/giveaways" class="navbar-item" style="color: white;">
-          Giveaways
-        </a>
-        <a href="/forums" class="navbar-item" style="color: white;">
-          Forums
-        </a>
-        <a href="/help" class="navbar-item" style="color: white;">
-          Search/Help
-        </a>
+        <a href="/" class="navbar-item has-text-white navbar-item-hovered">Home</a>
+        <a href="/games" class="navbar-item has-text-white navbar-item-hovered">Featured Games</a>
+        <a href="/games-list" class="navbar-item has-text-white navbar-item-hovered">Games List</a>
+        <a href="/giveaways" class="navbar-item has-text-white navbar-item-hovered">Giveaways</a>
+        <a href="/forums" class="navbar-item has-text-white navbar-item-hovered">Forums</a>
+        <a href="/help" class="navbar-item has-text-white navbar-item-hovered">Search/Help</a>
         <%- include('partials/alerts') %>
         <% if (!currentUser) {%>
-        <a href="/auth/signup" class="navbar-item" style="color: white;">Signup</a>
-        <a href="/auth/login" class="navbar-item" style="color: white;">Login</a>
+        <a href="/auth/signup" class="navbar-item has-text-white navbar-item-hovered">Signup</a>
+        <a href="/auth/login" class="navbar-item has-text-white navbar-item-hovered">Login</a>
         <% } else { %>
-        <a href="/auth/logout" class="navbar-item" style="color: white;">Logout</a>
-        <a href="/profile" class="navbar-item" style="color: white;">Profile</a>
+        <a href="/auth/logout" class="navbar-item has-text-white navbar-item-hovered">Logout</a>
+        <a href="/profile" class="navbar-item has-text-white navbar-item-hovered">Profile</a>
         <% } %>
       </div>
     </div>
