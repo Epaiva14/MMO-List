@@ -27,7 +27,7 @@
 
             <section class="pt-6">
                 <div class="container shadow section-sm rounded">
-                    <div class="columns is-multiline" style="background-color: beige;">
+                    <div class="columns is-multiline" style="background-color: darkseagreen;">
                         <!-- sidebar -->
 
                         <div class="column is-3-desktop is-12-tablet">
@@ -84,10 +84,9 @@
                         <ul>
                             <% for( let i = 0; i < 5; i++ ) { %>
                             <% let game=games[i] %>
-                            <li>
+                            <li style="color: white;">
                                 <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
                                 <%= game.publisher %>
-
                             </li>
                             <% } %>
                         </ul>
@@ -117,14 +116,14 @@
                 </div>
                 <div class="column is-6">
                     <div class="category">
-                        <h1 class="title is-5">
+                        <h1 style="color: white;" class="title is-5">
                             Developers
                         </h1>
                         <hr />
                         <ul>
                             <% for( let i = 0; i < 5; i++ ) { %>
                             <% let game=games[i] %>
-                            <li>
+                            <li style="color: white;">
                                 <i class="fas fa-caret-right fa-xs icon-padding-right" /></i>
                                 <%= game.developer %>
                             </li>
